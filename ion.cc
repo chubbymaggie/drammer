@@ -1,3 +1,19 @@
+/*
+ * Copyright 2016, Victor van der Veen
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 #include <assert.h>
 #include <fcntl.h>
 #include <stdint.h>
@@ -30,6 +46,7 @@ int chipset;
 #define CHIPSET_UNIVERSAL   1
 #define CHIPSET_KIRIN       1 
 #define CHIPSET_SPREADTRUM  2
+#define CHIPSET_QCT         22
 
 int ion_fd;
 extern int rowsize;
@@ -256,6 +273,15 @@ void ION_init(void) {
             print("Detected chipset Kirin\n");
             chipset = CHIPSET_KIRIN;
             break;
+        }
+        if (line.find("Kirin") != std::string::npos) {
+            print("Detected chipset Kirin\n");
+            chipset = CHIPSET_KIRIN;
+            break;
+        }
+        if (line.find("MSM8627") != std::string::npos) {
+            print("Detected cihpset MSM8627\n");
+            chipset = CHIPSET_QCT;
         }
     }
     

@@ -1,3 +1,20 @@
+/*
+ * Copyright 2016, Victor van der Veen
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -15,7 +32,7 @@
 #include "rowsize.h"
 
 #define ROWSIZE_READCOUNT 2500000 // 2.5 million reads
-#define ROWSIZE_PAGES 128
+#define ROWSIZE_PAGES 64 
 
 #define DEFAULT_ROWSIZE K(64)
 
@@ -33,7 +50,10 @@ std::vector<struct model> models = {
 // Snapdragon 808
    {"Nexus 5X",  "bullhead",         "bullhead",      "msm8992", 21,  K(64),  "LG Nexus 5X"},
    {"LG-H960",   "pplus_global_com", "msm8992",       "msm8992", 21,  K(64),  "LG V10"},
- 
+   {"LG-H815",   "p1_global_com",    "msm8992",       "msm8992", 21,  K(64),  "LG G4"},
+
+   {"C1905",     "cm_nicki",         "qcom",          "msm8960", 22,  K(32),  "Sony Xperia M"},
+
 // Snapdragon 805
    {"SM-G901F",  "kccat6xx",         "APQ8084",       "apq8084", 21,  K(128), "Samsung Galaxy S5 Plus"}, 
 // {"SM-N910V",  "trltevzw",         "APQ8084",       "apq8084", 21,  0,      "Samsung Galaxy Note 4"},
@@ -76,7 +96,7 @@ std::vector<struct model> models = {
 // {"AOSP on Mako", "full_mako",     "MAKO",          "msm8960", 21,  0,      ""},
 
    {"ALE-L21",   "ALE-L21",          "BalongV8R1SFT", "hi6210sft",1,  K(32),   "Huawei P8 Lite"},
-
+   {"EVA-L09",   "EVA-L09",          "EVA-L09",       "hi3650",  1,   K(64),   "Huawei P9"},
    {"HUAWEI VNS-L31", "VNS-L31",     "VNS-L31",       "hi6250",   1,  K(32),   "Huawei P9 Lite"},
 
    {"NEO6_LTE", "NEO6_LTE",          "",              "mt6735",   1,  K(32),   "Odys Neo 6"},
